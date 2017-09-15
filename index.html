@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Cookies</title>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.base64.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//读取
+				$('#user').val($.cookie('user'));
+				//解密
+				if($.cookie('pass')){
+					pass=$.base64.decode($.cookie('pass')); 
+					$('#pass').val(pass);
+				}
+					
+				
+				//提交新建
+				$(".sub").click(function(){
+					if($('#check').is(':checked')){
+						$.cookie("user", $('#user').val()); 
+						//加密
+						var pass=$('#pass').val();
+						pass=$.base64.encode(pass); 
+						$.cookie("pass", pass); 
+					}
+				})
+				
+				
+				//删除
+				$('.clearCookie').click(function(){
+					$.cookie("user", '', { expires: -1 }); 
+					$.cookie("pass", '', { expires: -1 }); 
+				})
+				
+				
+				//持续时间
+				$.cookie('myCookie1', '我是7天的Cookie', { expires: 7 }); 
+				var time= new Date();
+				time.setTime(time.getTime() + (60*60*1000));
+				$.cookie('myCookie2', '我是1小时的Cookie', { expires: time }); 
+				//存储路径，方便其他页面获取该cookie
+				$.cookie('myCookie3', '我是存储在根目录的Cookie', { expires: 7, path: '/' }); 
+			})
+		</script>
+	</head>
+	<body>
+		<form>
+			<h3>登录</h3>
+			<div>
+				用户名： <input type="text" name="" id="user" value="" placeholder="用户名" />
+			</div>
+			<div>
+				密码： <input type="text" name="" id="pass" value="" placeholder="密码" />
+			</div>
+			<div class="check">
+				<input type="checkbox" name="" id="check" value="" />
+				<label for="check">记住密码？</label>
+			</div>
+			<input type="button" class="sub" value="登录"/>
+		</form>
+		<button class="clearCookie">清空缓存</button>
+	</body>
+</html>
