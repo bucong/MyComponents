@@ -20,11 +20,15 @@
 				//提交新建
 				$(".sub").click(function(){
 					if($('#check').is(':checked')){
-						$.cookie("user", $('#user').val()); 
+						$.cookie("user", $('#user').val(), { expires: 7 }); 
 						//加密
 						var pass=$('#pass').val();
 						pass=$.base64.encode(pass); 
-						$.cookie("pass", pass); 
+						$.cookie("pass", pass, { expires: 7 }); 
+					}else{
+						//删除
+						$.cookie("user", '', { expires: -1 }); 
+						$.cookie("pass", '', { expires: -1 }); 
 					}
 				})
 				
@@ -53,7 +57,7 @@
 				用户名： <input type="text" name="" id="user" value="" placeholder="用户名" />
 			</div>
 			<div>
-				密码： <input type="text" name="" id="pass" value="" placeholder="密码" />
+				密码： <input type="password" name="" id="pass" value="" placeholder="密码" />
 			</div>
 			<div class="check">
 				<input type="checkbox" name="" id="check" value="" />
