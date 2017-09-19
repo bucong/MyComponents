@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>select2</title>
+		<link rel="stylesheet" type="text/css" href="css/select2.min.css"/>
+		<style type="text/css">
+			.select2-container,.select2-dropdown--below{
+				width: 300px !important;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>多选框单选</h3>
+        <select id="Importance1" name="Importance" class="select2" placeholder="请选择...">
+        	<option value="1">足球</option>
+        	<option value="2">乒乓球</option>
+        	<option value="3">羽毛球</option>
+        	<option value="4">篮球</option>
+        	<option value="5">游泳</option>
+        	<option value="6">跑步</option>
+        	<option value="7">攀岩</option>
+        	<option value="8">徒步</option>
+        </select>
+        <h3>多选框多选</h3>
+        <select id="Importance2" name="Importance" class="select2" multiple="multiple" placeholder="请选择...">
+        	<option value="1">足球</option>
+        	<option value="2">乒乓球</option>
+        	<option value="3">羽毛球</option>
+        	<option value="4">篮球</option>
+        	<option value="5">游泳</option>
+        	<option value="6">跑步</option>
+        	<option value="7">攀岩</option>
+        	<option value="8">徒步</option>
+        </select>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/select2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#Importance1").select2();
+				$("#Importance2").select2();
+			});
+		</script>
+	</body>
+</html>

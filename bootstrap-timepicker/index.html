@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap时间选择器</title>
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="./bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+<div class="container">
+	<h1 style="margin: 100px;">时间选择器</h1>
+    <div class="form-group">
+        <label for="dtp_input1" class="col-md-2 control-label">日期时间选择</label>
+        <div class="input-group date form_datetime col-md-5" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+            <input class="form-control" size="16" type="text" value="" readonly>
+            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+			<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+        </div>
+		<input type="hidden" id="dtp_input1" value="" /><br/>
+    </div>
+	<div class="form-group">
+        <label for="dtp_input2" class="col-md-2 control-label">年月日选择</label>
+        <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+            <input class="form-control" size="16" type="text" value="" readonly>
+            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+			<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        </div>
+		<input type="hidden" id="dtp_input2" value="" /><br/>
+    </div>
+	<div class="form-group">
+        <label for="dtp_input3" class="col-md-2 control-label">时间选择</label>
+        <div class="input-group date form_time col-md-5" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+            <input class="form-control" size="16" type="text" value="" readonly>
+            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+			<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+        </div>
+		<input type="hidden" id="dtp_input3" value="" /><br/>
+    </div>
+</div>
+
+<script type="text/javascript" src="./js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./bootstrap/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<!--中文版-->
+<script src="js/zh-CN.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        language:  'zh-CN',//中文版
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+	$('.form_date').datetimepicker({
+        language:  'fr',//英文版
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+	$('.form_time').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minView: 0,
+		maxView: 1,
+		forceParse: 0
+    });
+</script>
+
+</body>
+</html>
