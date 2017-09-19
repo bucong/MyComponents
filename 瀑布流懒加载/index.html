@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>网格瀑布流</title>
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<div class="container">
+      	<div class="waterfall">
+      	</div>
+	</div>
+	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap-waterfall.js"></script>
+    <script>
+    	var htmlData='';
+    	for(var i=1;i<=20;i++){
+    		htmlData+='<ul class="list-group">';
+    		htmlData+='<li class="list-group-item">';
+    		htmlData+='<a href="javascript:;">';
+    		htmlData+='<img src="images/'+i+'.jpg" />';
+    		htmlData+='</a>';
+    		htmlData+='</li>';
+    		htmlData+='<li class="list-group-item">';
+    		htmlData+='<button type="button" class="btn btn-default btn-xs" title="thumb up"><span class="glyphicon glyphicon-thumbs-up"></span></button>';
+    		htmlData+='<button type="button" class="btn btn-default btn-xs" title="thumb down"><span class="glyphicon glyphicon-thumbs-down"></span></button>';
+    		htmlData+='<button type="button" class="btn btn-default btn-xs pull-right" title="pin"><span class="glyphicon glyphicon-pushpin"></span></button>';
+    		htmlData+='</li>';
+    		htmlData+='<li class="list-group-item">';
+          	htmlData+='<div class="media">';
+            htmlData+='<div class="media-left">';
+            htmlData+='<a href="javascript:;">';
+            htmlData+='<img class="media-object img-rounded" style="width: 30px; height: 30px;" src="images/avatar_30.png" />';
+            htmlData+='</a>';
+            htmlData+='</div>';
+            htmlData+='<div class="media-body">';
+            htmlData+='<h5 class="media-heading">卜聪</h5>';
+            htmlData+='<small>How about this? Awesome! I love this pin!I love this pin!</small>';
+            htmlData+='</div>';
+          	htmlData+='</div>';
+        	htmlData+='</li>';
+    		htmlData+='</ul>';
+    	}
+      $('.waterfall')
+        .data('bootstrap-waterfall-template', htmlData)
+        .waterfall();
+    </script>
+</body>
+</html>
