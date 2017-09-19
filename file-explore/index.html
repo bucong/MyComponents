@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>树形图</title>
+		<link href="css/file-explore.css" rel="stylesheet" type="text/css">
+		<style type="text/css">
+			body{
+				background: #494A5F;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="htmleaf-container">
+			<h1 style="color: #fff;">文件列表</h1>
+			<ul class="file-tree">
+				<li>
+					<a href="#">收藏夹</a>
+					<ul>
+						<li>
+							<a href="#">文档</a>
+							<ul>
+								<li>
+									<a href="#">图片</a>
+									<ul>
+										<li>
+											<a href="#link5">Link 5</a>
+										</li>
+										<li>
+											<a href="#link6">Link 6</a>
+										</li>
+										<li>
+											<a href="#link7">Link 7</a>
+										</li>
+										<li>
+											<a href="#link8">Link 8</a>
+										</li>
+										<li>
+											<a href="#">Deeper</a>
+											<ul>
+												<li>
+													<a href="#">Link 1</a>
+												</li>
+												<li>
+													<a href="#">Link 2</a>
+												</li>
+												<li>
+													<a href="#">Link 3</a>
+												</li>
+												<li>
+													<a href="#">Link 4</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">视频</a>
+									<ul>
+										<li>
+											<a href="#link5">Link 5</a>
+										</li>
+										<li>
+											<a href="#link6">Link 6</a>
+										</li>
+										<li>
+											<a href="#link7">Link 7</a>
+										</li>
+										<li>
+											<a href="#link8">Link 8</a>
+										</li>
+										<li>
+											<a href="#">Deeper</a>
+											<ul>
+												<li>
+													<a href="#">Link 1</a>
+												</li>
+												<li>
+													<a href="#">Link 2</a>
+												</li>
+												<li>
+													<a href="#">Link 3</a>
+												</li>
+												<li>
+													<a href="#">Link 4</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+
+							</ul>
+
+						</li>
+						<li>
+							<a href="#link2">Link 2</a>
+						</li>
+						<li>
+							<a href="#link3">Link 3</a>
+						</li>
+						<li>
+							<a href="#link4">Link 4</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">音乐</a>
+					<ul>
+						<li>
+							<a href="#">Link 1</a>
+						</li>
+						<li>
+							<a href="#">Link 2</a>
+						</li>
+						<li>
+							<a href="#">Link 3</a>
+						</li>
+						<li>
+							<a href="#">Link 4</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/file-explore.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".file-tree").filetree();
+			});
+		</script>
+	</body>
+
+</html>
