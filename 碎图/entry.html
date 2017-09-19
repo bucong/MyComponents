@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>爱你</title>
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo-entry.css" />
+</head>
+	<body class="demo-switch loading">
+		<svg class="hidden">
+			<symbol id="icon-arrow" viewBox="0 0 24 24">
+				<title>arrow</title>
+				<polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 "/>
+			</symbol>
+			<symbol id="icon-drop" viewBox="0 0 24 24">
+				<title>drop</title>
+				<path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z"/><path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z"/>
+			</symbol>
+		</svg>
+		<main>
+			<div class="content">
+				<nav class="page-nav">
+					<a class="page-nav__item" href="#">我爱你</a>
+					<a class="page-nav__item" href="#">老婆</a>
+					<a class="page-nav__item" href="#">你是最美的</a>
+					<a class="page-nav__item page-nav__item--close" href="#">返回</a>
+				</nav>
+				<div class="pieces" style="background-image: url(img/love.jpg)"></div>
+				<h2 class="content__title">点我哦</h2>
+			</div>
+		</main>
+	
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<script src="js/anime.min.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+		{
+			imagesLoaded(document.body, { background: true }, () => document.body.classList.remove('loading'));
+
+			const piecesEl = document.querySelector('.content .pieces');
+			const piecesObj = new Pieces(piecesEl, {
+				 pieces: {rows: 14, columns: 12}
+			});
+			const menuEl = document.querySelector('.page-nav');
+			const optionsCtrl = document.querySelector('.content__title');
+			const closeOptionsCtrl = menuEl.querySelector('a.page-nav__item--close');
+
+			const showOptions = () => {
+				menuEl.classList.add('page-nav--open');
+
+				piecesObj.animate({
+					duration: 3000,
+					delay: (t,i) => {
+						const elBounds = piecesEl.getBoundingClientRect();
+						const x1 = elBounds.left + elBounds.width/2;
+						const y1 = elBounds.top + elBounds.height/2;
+						const tBounds = t.getBoundingClientRect();
+						const x2 = tBounds.left + tBounds.width/2;
+						const y2 = tBounds.top + tBounds.height/2;
+						const dist = Math.sqrt(Math.pow(x2-x1,2) + Math.pow(y2-y1,2));
+						const maxDist = Math.sqrt(Math.pow(elBounds.left-x1,2) + Math.pow(elBounds.top-y1,2));
+						const maxDelay = 300;
+
+						t.dataset.centerx = x2;
+						t.dataset.centery = y2;
+
+						return -1*maxDelay/maxDist*dist + maxDelay;
+					},
+					easing: [0.1,1,0,1],
+					translateX: (t,i) => { 
+						return t.dataset.column < piecesObj.getTotalColumns()/2 ? anime.random(-400,0) : anime.random(0,400);
+					},
+					translateY: (t,i) => { 
+						return t.dataset.row < piecesObj.getTotalRows()/2 ? anime.random(-400,0) : anime.random(0,400);
+					},
+					opacity: 0.2
+				});
+				
+				anime.remove(optionsCtrl);
+				anime({
+					targets: optionsCtrl,
+					duration: 700,
+					easing: 'easeOutExpo',
+					scale: 1.2,
+					opacity: 0
+				});
+
+				anime.remove(menuEl);
+				anime({
+					targets: menuEl,
+					duration: 700,
+					delay: 150,
+					easing: 'easeOutExpo',
+					scale: [0,1],
+					opacity: 1
+				});
+			};
+
+			const hideOptions = (ev) => {
+				ev.preventDefault();
+				menuEl.classList.remove('page-nav--open');
+
+				piecesObj.animate({
+					duration: 600,
+					delay: (t,i) => {
+						const elBounds = piecesEl.getBoundingClientRect();
+						const x1 = elBounds.left + elBounds.width/2;
+						const y1 = elBounds.top + elBounds.height/2;
+						const x2 = t.dataset.centerx;
+						const y2 = t.dataset.centery;
+						const dist = Math.sqrt(Math.pow(x2-x1,2) + Math.pow(y2-y1,2));
+						const maxDist = Math.sqrt(Math.pow(elBounds.left-x1,2) + Math.pow(elBounds.top-y1,2));
+						const maxDelay = 800;
+
+						return maxDelay/maxDist*dist;
+					},
+					easing: [0.1,1,0,1],
+					translateX: 0,
+					translateY: 0,
+					opacity: 1
+				});
+				
+				anime.remove(optionsCtrl);
+				anime({
+					targets: optionsCtrl,
+					duration: 700,
+					delay: 200,
+					easing: 'easeOutQuint',
+					scale: [1.1,1],
+					opacity: 1
+				});
+
+				anime.remove(menuEl);
+				anime({
+					targets: menuEl,
+					duration: 700,
+					easing: 'easeOutQuint',
+					scale: 0.8,
+					opacity: 0
+				});
+			};
+
+			optionsCtrl.addEventListener('click', showOptions);
+			closeOptionsCtrl.addEventListener('click', hideOptions);
+		}
+	</script>
+	<script src="pater/pater.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>图片碎片</title>
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo-gallery.css" />
+</head>
+	<body>
+		<div class="content">
+			<div class="gallery">
+				<div class="gallery__item pieces gallery__item--current" style="background-image: url(img/g1.jpg)"></div>
+				<div class="gallery__item pieces" style="background-image: url(img/g2.jpg)"></div>
+				<div class="gallery__item pieces" style="background-image: url(img/g3.jpg)"></div>
+				<div class="gallery__item pieces" style="background-image: url(img/g4.jpg)"></div>
+				<div class="gallery__item pieces" style="background-image: url(img/g5.jpg)"></div>
+			</div>
+			<nav class="gallery-nav">
+				<span class="gallery-nav__item gallery-nav__item--current"></span>
+				<span class="gallery-nav__item"></span>
+				<span class="gallery-nav__item"></span>
+				<span class="gallery-nav__item"></span>
+				<span class="gallery-nav__item"></span>
+			</nav>
+			<div class="switch">
+				<button class="switch__item switch__item--current">向上</button>
+				<button class="switch__item">向左</button>
+				<button class="switch__item">向下</button>
+			</div>
+		</div>
+	
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<script src="js/anime.min.js"></script>
+	<script src="js/gallery.js"></script>
+</body>
+</html>
