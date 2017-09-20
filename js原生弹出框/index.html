@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>弹出对话框</title>
+		<link rel="stylesheet" href="css/x0popup.min.css">
+	</head>
+
+	<body>
+		<a class="" href="javascript:exec(1);">提示框</a>
+		<code data-language="javascript" id="code-1">x0p('提示', '确定吗?', 'info');</code>
+		<br />
+		
+		<a class="" href="javascript:exec(2);">Confirm确认框</a>
+		<code data-language="javascript" id="code-2">x0p('Confirmation', 'Are you sure?', 'warning');</code>
+		<br />
+		
+		<a class="button bg-color-5" href="javascript:exec(3);">输入框</a>
+		<code data-language="javascript" id="code-3">x0p('Enter Your Name', null, 'input',
+		    function(button, text) {
+		        if(button == 'info') {
+		            x0p('Congratulations', 
+		                'Your name is ' + text + '!', 
+		                'ok', false);
+		        }
+		        if(button == 'cancel') {
+		            x0p('Canceled', 
+		                'You canceled input.',
+		                'error', false);
+		        }
+		    });
+		</code>
+		<br />
+		
+		<a class="" href="javascript:exec(5);">选择框，判断正误</a>
+		<code data-language="javascript" id="code-5">x0p({
+		    title: 'Custom Popup',
+		    text: '你的选择是?',
+		    animationType: 'slideUp',
+		    icon: 'custom',
+		    iconURL: 'image/thinking.svg',
+		    buttons: [
+		        {
+		            type: 'error',
+		            text: 'First'
+		        },
+		        {
+		            type: 'info',
+		            text: 'Second'
+		        }
+		    ]
+		}, function(button) {
+		    x0p({
+		        title: 'Your choice', 
+		        text: 'You clicked ' + button + ' button!',
+		        overlayAnimation: false
+		    });
+		});</code>
+		<br />
+		
+		<a class="" href="javascript:exec(6);">延时框</a>
+		<code data-language="javascript" id="code-6">x0p({
+		    title: '自动关闭',
+		    text: '这个提示框显示3秒.',
+		    animationType: 'slideDown',
+		    icon: 'info',
+		    buttons: [],
+		    autoClose: 3000
+		});</code>
+		<br />
+		
+		<a class="" href="javascript:exec(7);">Confirm确认延时框</a>
+		<code data-language="javascript" id="code-7">x0p({
+		    title: 'Async Operation',
+		    text: '要继续吗？',
+		    icon: 'info',
+		    animationType: 'fadeIn',
+		    buttons: [
+		        {
+		            type: 'cancel',
+		            text: '取消'
+		        },
+		        {
+		            type: 'info',
+		            text: '继续',
+		            showLoading: true
+		        }
+		    ]
+		}, function(button) {
+		    if(button == 'info') {
+		        // Simulate Delay
+		        setTimeout(function() {
+		            x0p('Done', null, 'ok', false);
+		        }, 1500);
+		    }
+		});</code>
+		<br />
+		
+		<a class="" href="javascript:exec(8);">填写数字弹出框</a>
+		<code data-language="javascript" id="code-8">x0p({
+		    title: '数字输入',
+		    type: 'warning',
+		    inputType: 'text',
+		    inputPlaceholder: '只能输入数字',
+		    inputColor: '#F29F3F',
+		    inputValidator: function(button, value) {
+		        if(value == '' || isNaN(value))
+		            return 'Not a number!';
+		        return null;
+		    }
+		}, function(button, text) {
+		    if(button == 'warning') {
+		        x0p('Congratulations', 
+		            'Your number is ' + text + '!', 
+		            'ok', false);
+		    }
+		});</code>
+			
+		<script src="js/x0popup.min.js"></script>
+		<script type="text/javascript">
+			function exec(number) {
+				var code = document.getElementById('code-' + number).innerText;
+				eval(code);
+			}
+		</script>
+	</body>
+
+</html>
