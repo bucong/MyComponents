@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/layer.css"/>
+		<script src="js/layer.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<button onclick="show()">开始加载</button>
+		<script type="text/javascript">
+			function show(){
+				layer.open({
+					content: '数据加载中',
+					type: 2,
+					shadeClose:false
+				});
+				setTimeout(function(){
+					layer.closeAll();
+					alert('加载成功');
+				},3000)
+			}
+		</script>
+	</body>
+</html>

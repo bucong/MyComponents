@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		img{
+			height: 400px;
+			margin-bottom: 20px;
+		}
+	</style>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="container">
+		
+	</div>
+	<script type="text/javascript">
+		var expression='';
+		for(var i=0;i<99;i++){
+			expression+='<li><img src="" data-original="https://res.wx.qq.com/mpres/htmledition/images/icon/emotion/'+i+'.gif"/></li>';
+		}
+		$('.container').append(expression);
+        $(document).ready(function() {     
+            $("img").lazyload({ 
+　　　　　　　　　　effect : "fadeIn", //渐现，show(直接显示),fadeIn(淡入),slideDown(下拉)
+//　　　　　　　　　　threshold : 180, //预加载，在图片距离屏幕180px时提前载入
+//　　　　　　　　　　failure_limit:2 //加载2张可见区域外的图片,lazyload默认在找到第一张不在可见区域里的图片时则不再继续加载,但当HTML容器混乱的时候可能出现可见区域内图片并没加载出来的情况
+　　　　　　　　}); 
+　　　　　　});
+	</script>
+</body>
+</html>
