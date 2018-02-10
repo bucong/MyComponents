@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/animate.css"/>
+    <style>
+        ul{
+            margin: 0 auto;
+            width: 1000px;
+            height: 400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+            list-style: none;
+        }
+        li{
+            width: 230px;
+            height: 230px;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li class="animated bounceInDown" data-wow-delay=".5s"><img src="images/1.jpeg" alt="1"/></li>
+    <li class="wow animated bounceInDown" data-wow-delay="1s"><img src="images/2.jpeg" alt="2"/></li>
+    <li class="wow animated bounceInDown" data-wow-delay="1.5s"><img src="images/3.jpeg" alt="3"/></li>
+    <li class="wow animated bounceInDown" data-wow-delay="2s"><img src="images/4.jpeg" alt="4"/></li>
+</ul>
+<script src="../animate/js/jquery-1.12.4.min.js"></script>
+<script src="../animate/js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+</body>
+</html>

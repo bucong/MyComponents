@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>图片轮播</title>
+    <link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css"/>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.js"></script>
+    <style>
+        .carousel-control{
+            background-image: none !important;
+            color: lightblue;
+        }
+        img{
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!--轮播图的容器carousel-->
+    <div class="carousel slide" id="car">
+        <ol class="carousel-indicators">
+            <!--data-slide-to="index"控制点和轮播子元素的index相对应-->
+            <li class="active" data-target="#car" data-slide-to="0"></li>
+            <li data-target="#car" data-slide-to="1"></li>
+            <li data-target="#car" data-slide-to="2"></li>
+            <li data-target="#car" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner in">
+            <div class="item active">
+                <img src="images/5.jpg" alt="1"/>
+                <div class="carousel-caption">
+                    <h4>苏宁电器</h4>
+                    <p>统统不要钱</p>
+                </div>
+            </div>
+            <div class="item"><img src="images/2.jpg" alt="2"/></div>
+            <div class="item"><img src="images/3.jpg" alt="3"/></div>
+            <div class="item"><img src="images/4.jpg" alt="4"/></div>
+        </div>
+        <a href="#car" class="carousel-control left" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a href="#car" class="carousel-control right" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+
+<script src="js/jquery-1.12.4.min.js"></script>
+<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.carousel').carousel({
+                interval:3000
+            });
+        })
+    </script>
+</body>
+</html>
