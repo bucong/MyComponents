@@ -243,6 +243,7 @@ input{padding:2px 0 1px;*padding:4px 0 0;_padding:4px 0 0;_height:21px;}
 	z-index:100;
     position: absolute;
     right: 0;
+    bottom: 0px;
 }
 .i_pre,.i_next,.ta_calendar td.ta_dateRangeSelected,.ta_calendar td.first,.ta_calendar td.last,.ta_calendar td.today{
 	/*background:url(http://imgcache.qq.com/bossweb/mta/images/calendar_all.png) no-repeat;*/

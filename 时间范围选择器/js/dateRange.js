@@ -1037,7 +1037,7 @@ pickerDateRange.prototype.show = function(isCompare, __method) {
 	}
     $("#" + this.calendarId).css('left', left  + 'px');
     //$("#" + this.calendarId).css('top', pos.top + (offsetHeight ? offsetHeight- 1 : (__method.mOpts.theme=='ta'?35:22)) + 'px');
-	$("#" + this.calendarId).css('top', pos.top + (__method.mOpts.theme=='ta'?35:22) + 'px');
+	//$("#" + this.calendarId).css('top', pos.top + (__method.mOpts.theme=='ta'?35:22) + 'px');
 	//第一次显示的时候，一定要初始化输入框
 	isCompare ? this.changeInput(this.startCompareDateId) : this.changeInput(this.startDateId);
     return false;
